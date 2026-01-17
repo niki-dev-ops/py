@@ -1,1 +1,1466 @@
 
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Code Library</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        background: white;
+        min-height: 100vh;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+        color: white;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .header h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        opacity: 0.8;
+      }
+
+      .content-wrapper {
+        display: flex;
+        min-height: calc(100vh - 120px);
+      }
+
+      .sidebar {
+        width: 280px;
+        background: #f7fafc;
+        border-right: 2px solid #e2e8f0;
+        padding: 20px;
+      }
+
+      .nav-title {
+        font-size: 0.9em;
+        color: #718096;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 12px 16px;
+        color: #2d3748;
+        text-decoration: none;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        transition: all 0.2s ease;
+        font-weight: 500;
+        border: 1px solid black;
+      }
+
+      .nav-link:hover {
+        background: #e2e8f0;
+        transform: translateX(5px);
+      }
+
+      .nav-link.active {
+        background: #667eea;
+        color: white;
+      }
+
+      .main-content {
+        flex: 1;
+        padding: 40px;
+        overflow-y: auto;
+      }
+
+      .page {
+        display: none;
+      }
+
+      .page.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .page-title {
+        font-size: 2em;
+        color: #2d3748;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #667eea;
+      }
+
+      .text-section {
+        color: #2d3748;
+        margin-bottom: 25px;
+        font-size: 1.05em;
+        line-height: 1.7;
+        background: #f7fafc;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+      }
+
+      .text-section h3 {
+        margin-bottom: 12px;
+        color: #667eea;
+      }
+
+      .text-section p {
+        margin-bottom: 10px;
+      }
+
+      .text-section ul {
+        margin-left: 25px;
+        margin-top: 10px;
+      }
+
+      .text-section li {
+        margin-bottom: 8px;
+      }
+
+      .code-block {
+        background: #1e1e1e;
+        border-radius: 8px;
+        padding: 25px;
+        overflow-x: auto;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 25px;
+      }
+
+      pre {
+        margin: 0;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #d4d4d4;
+      }
+
+      @media (max-width: 768px) {
+        .content-wrapper {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          border-right: none;
+          border-bottom: 2px solid #e2e8f0;
+        }
+
+        .main-content {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>📚 Python Code Library</h1>
+        <p>Browse and explore Python code examples</p>
+      </div>
+
+      <div class="content-wrapper">
+        <nav class="sidebar">
+          <div class="nav-title">Code Examples</div>
+          <a href="#" class="nav-link active" data-page="0"
+            >წრფივი რეგერსია, პროგნოზირების ამოცანა (შესაბამისი მეტრიკების
+            გამოყენება); კლასიფიკაციის ამოცანები (ბინარული, მრავალკლასიანი)
+            მონაცემთა ანალიზი და ვიზუალიზაცია
+            <br />
+            <br />
+            მონაცემთა ბაზის ბალანსირებულობის შემოწმება (countplot)
+            მახასიათებლებს შორის კორელაციის გამოთვლა კორელაციის მატრიცის
+            ვიზუალიზაცია (heatmap)</a
+          >
+          <a href="#" class="nav-link" data-page="1">
+            მონაცემთა წინასწარი დამუშავება (Preprocessing)
+            <br />
+            <br />
+            მონაცემთა დაყოფა სატრენინგო და სატესტო ნაკრებად მონაცემთა
+            ნორმალიზაცია და სტანდარტიზაცია (StandardScaler, MinMaxScaler)
+            preprocessing-ის მნიშვნელობა მანქანურ სწავლებაში
+          </a>
+          <a href="#" class="nav-link" data-page="2">
+            კლასიფიკაციის ალგორითმები
+            <br />
+            <br />
+            Support Vector Classifier (SVC) K-Nearest Neighbors (KNN) Gaussian
+            Naive Bayes Decision Tree Random Forest Classifier
+          </a>
+          <a href="#" class="nav-link" data-page="3">
+            მოდელის შეფასება
+            <br />
+            <br />
+            Confusion Matrix და მისი კომპონენტები (True Positive, False
+            Positive, True Negative, False Negative) შეფასების მეტრიკები:
+            Accuracy, Precision, Recall, F1-score მეტრიკების გამოყენება
+            ბალანსირებულ და არაბალანსირებულ მონაცემთა ბაზებში.
+          </a>
+          <a href="#" class="nav-link" data-page="4">
+            ჰიპერპარამეტრების ოპტიმიზაცია
+            <br />
+            <br />GridSearchCV-ის დანიშნულება და მუშაობის პრინციპი
+            ჰიპერპარამეტრის ცნება GridSearchCV-ის გამოყენება
+            Cross-Validation-თან ერთად
+          </a>
+          <a href="#" class="nav-link" data-page="5">
+            Cross-Validation
+            <br />
+            <br />
+            Cross-Validation-ის არსი და დანიშნულება K-Fold Cross-Validation-ის
+            მუშაობის პრინციპი უპირატესობები ერთჯერად train/test გაყოფასთან
+            შედარებით
+          </a>
+          <a href="#" class="nav-link" data-page="6">
+            Overfitting და Underfitting
+            <br />
+            <br />
+            ცნებების განმარტება Overfitting-ის ამოცნობის ნიშნები Overfitting-ის
+            თავიდან აცილების მეთოდები
+          </a>
+          <a href="#" class="nav-link" data-page="7"
+            >კლასტერიზაცია <br />
+            <br />
+            K-means კლასტერიზაციის ალგორითმი პარამეტრი K K-means-ის
+            შეზღუდვები</a
+          >
+          <a href="#" class="nav-link" data-page="8"
+            >განზომილების შემცირება <br />
+            <br />
+            PCA (Principal Component Analysis) მთავარი კომპონენტის მნიშვნელობა
+            მონაცემთა მასშტაბირების აუცილებლობა PCA-მდე</a
+          >
+        </nav>
+
+        <main class="main-content" id="mainContent">
+          <!-- Pages will be dynamically loaded here -->
+        </main>
+      </div>
+    </div>
+
+    <script>
+      const sections = [
+        {
+          title: "Section 1 Title",
+          content: [
+            {
+              type: "text",
+              content: `<h3>წრფივი რეგრესია – პროგნოზირების ამოცანა (+ მეტრიკები)</h3>`,
+            },
+            {
+              type: "code",
+              content: `# import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+# sample data
+df = pd.DataFrame({
+    "size": [50, 60, 70, 80, 90],
+    "rooms": [1, 2, 2, 3, 3],
+    "price": [100, 120, 150, 180, 210]
+})
+
+# features / target
+X = df[["size", "rooms"]]
+y = df["price"]
+
+# split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# prediction
+y_pred = model.predict(X_test)
+
+# metrics
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+mae, mse, r2
+`,
+            },
+            {
+              type: "text",
+              content: `<h3>regression → MAE, MSE, R²
+
+target is numeric</h3>`,
+            },
+            {
+              type: "text",
+              content: `<h3>კლასიფიკაციის ამოცანები</h3>
+              <p>2.1 ბინარული კლასიფიკაცია (Binary)</p>
+              <p>Example: pass / fail prediction</p>`,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+# data
+df = pd.DataFrame({
+    "study_hours": [2, 4, 6, 8, 10],
+    "pass": [0, 0, 1, 1, 1]
+})
+
+X = df[["study_hours"]]
+y = df["pass"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+# evaluation
+cm = confusion_matrix(y_test, y_pred)
+acc = accuracy_score(y_test, y_pred)
+
+cm, acc
+`,
+            },
+            {
+              type: "text",
+              content: `<h3>მრავალკლასიანი კლასიფიკაცია (Multiclass)</h3>
+              <p>Example: wine class prediction</p>`,
+            },
+            {
+              type: "code",
+              content: `from sklearn.datasets import load_wine
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+# load dataset
+data = load_wine()
+X = data.data
+y = data.target   # 3 classes
+
+# split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# model
+model = KNeighborsClassifier(n_neighbors=5)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+accuracy
+`,
+            },
+            {
+              type: "text",
+              content: `
+              <p>Multiclass → 3+ classes, same workflow as binary</p>
+              `,
+            },
+
+            {
+              type: "text",
+              content: `
+              <h3>მონაცემთა ანალიზი და ვიზუალიზაცია (EDA)/h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `
+              import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("iris")
+
+              
+              `,
+            },
+            {
+              type: "text",
+              content: `
+              <h4>მონაცემთა ანალიზი/h4>
+              `,
+            },
+            {
+              type: "code",
+              content: `
+              df.head()
+df.info()
+df.describe()
+              `,
+            },
+            {
+              type: "text",
+              content: `
+              <h3>კლასების ბალანსის შემოწმება (countplot)/h3>
+              `,
+            },
+            {
+              type: "code",
+              content: `
+              sns.countplot(x="species", data=df)
+plt.show()
+`,
+            },
+            {
+              type: "text",
+              content: `
+              <h3>3.3 განაწილების ვიზუალიზაცია (Histogram)</h3>`,
+            },
+
+            {
+              type: "code",
+              content: `
+              sns.histplot(df["sepal_length"], kde=True)
+plt.show()
+              `,
+            },
+
+            {
+              type: "text",
+              content: `
+              <h3>მახასიათებლებს შორის კავშირი (Scatter)</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `
+              sns.scatterplot(
+    x="sepal_length",
+    y="petal_length",
+    hue="species",
+    data=df
+)
+plt.show()
+`,
+            },
+            {
+              type: "text",
+              content: `
+              <h3>კორელაცია + Heatmap</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `
+              corr = df.drop("species", axis=1).corr()
+
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+plt.show()
+              `,
+            },
+          ],
+        },
+        {
+          title: "Section 3 Title",
+          content: [
+            {
+              type: "text",
+              content: `<h3>მონაცემთა წინასწარი დამუშავება (Preprocessing)</h3>
+              <p>Example dataset:</p>`,
+            },
+
+            {
+              type: "code",
+              content: `import pandas as pd
+import numpy as np
+
+df = pd.DataFrame({
+    "age": [20, 25, np.nan, 40, 35],
+    "salary": [3000, 4000, 5000, np.nan, 6000],
+    "score": [50, 60, 70, 80, 90],
+    "target": [0, 1, 1, 0, 1]
+})`,
+            },
+
+            {
+              type: "text",
+              content: `<p>Missing values-ის დამუშავება</p>`,
+            },
+
+            {
+              type: "code",
+              content: `df.isnull().sum()`,
+            },
+            {
+              type: "text",
+              content: `<p>Replace with mean</p>`,
+            },
+
+            {
+              type: "code",
+              content: `df["age"].fillna(df["age"].mean(), inplace=True)
+df["salary"].fillna(df["salary"].mean(), inplace=True)`,
+            },
+            {
+              type: "text",
+              content: `<h3>1.2 Feature / Target გამოყოფ</h3>`,
+            },
+
+            {
+              type: "code",
+              content: `X = df.drop("target", axis=1)
+y = df["target"]`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>მონაცემთა დაყოფა სატრენინგო და სატესტო ნაკრებად</h3>`,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+)`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>მონაცემთა ნორმალიზაცია და სტანდარტიზაცია</h3>
+              <p>StandardScaler (სტანდარტიზაცია)</p>`,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+
+📌 Result:
+
+mean = 0
+
+std = 1
+
+📌 Used for:
+SVM, KNN, Linear Regression, PCA
+`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>MinMaxScaler (ნორმალიზაცია)</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+
+
+📌 Result:
+
+values scaled to [0, 1]
+
+📌 Used for:
+distance-based algorithms (KNN, K-Means)
+              `,
+            },
+
+            {
+              type: "text",
+              content: `<h3>preprocessing-ის მნიშვნელობა მანქანურ სწავლებაში</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `
+#Example: KNN without vs with scaling
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+#Without scaling
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+accuracy_score(y_test, y_pred)
+
+# With scaling
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X_train_scaled, y_train)
+
+y_pred = model.predict(X_test_scaled)
+accuracy_score(y_test, y_pred)
+
+
+# 📌 Accuracy usually improves after preprocessing
+              `,
+            },
+          ],
+        },
+        {
+          title: "Section 4 Title",
+          content: [
+            {
+              type: "text",
+              content: `<h3>Common setup (USED FOR ALL MODELS)</h3>
+              `,
+            },
+            {
+              type: "code",
+              content: `from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, confusion_matrix
+
+# load data
+data = load_iris()
+X = data.data
+y = data.target   # multiclass (3 classes)
+
+# split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# scaling (needed for some models)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+# Scaling helps SVC & KNN
+`,
+            },
+            {
+              type: "text",
+              content: `<h3>Support Vector Classifier (SVC)</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.svm import SVC
+
+model = SVC(kernel="rbf", C=1.0)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+
+accuracy, cm
+
+              `,
+            },
+
+            {
+              type: "text",
+              content: `<h3>K-Nearest Neighbors (KNN)</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.neighbors import KNeighborsClassifier
+
+model = KNeighborsClassifier(n_neighbors=5)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+
+accuracy, cm
+`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Gaussian Naive Bayes</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.naive_bayes import GaussianNB
+
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+
+accuracy, cm
+
+              `,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Decision Tree Classifier</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.tree import DecisionTreeClassifier
+
+model = DecisionTreeClassifier(
+    criterion="gini",
+    max_depth=None,
+    random_state=42
+)
+
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+
+accuracy, cm
+
+              `,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Random Forest Classifier</h3>
+              `,
+            },
+            {
+              type: "code",
+              content: `from sklearn.ensemble import RandomForestClassifier
+
+model = RandomForestClassifier(
+    n_estimators=100,
+    random_state=42
+)
+
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+
+accuracy, cm
+
+              `,
+            },
+            {
+              type: "text",
+              content: `<p>Model	Needs scaling	Overfitting risk	Fast
+SVC	✅ Yes	Medium	❌
+KNN	✅ Yes	Medium	❌
+Naive Bayes	❌ No	Low	✅
+Decision Tree	❌ No	High	✅
+Random Forest	❌ No	Low	❌</p>
+              `,
+            },
+          ],
+        },
+        {
+          title: "Section 5 Title",
+          content: [
+            {
+              type: "text",
+              content: `<h3>Confusion Matrix + მისი კომპონენტები</h3>
+              <p>Binary classification example</p>`,
+            },
+            {
+              type: "code",
+              content: `import numpy as np
+from sklearn.metrics import confusion_matrix
+
+# true labels and predictions
+y_true = np.array([1, 0, 1, 1, 0, 0, 1, 0])
+y_pred = np.array([1, 0, 0, 1, 0, 1, 1, 0])
+
+cm = confusion_matrix(y_true, y_pred)
+cm
+
+# Confusion Matrix structure
+# [[TN  FP]
+# [FN  TP]]
+
+# TN, FP, FN, TP = cm.ravel()
+# TN, FP, FN, TP
+`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>შეფასების მეტრიკები</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+accuracy = accuracy_score(y_true, y_pred)
+precision = precision_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred)
+f1 = f1_score(y_true, y_pred)
+
+accuracy, precision, recall, f1
+`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Multiclass metrics example</h3>
+              `,
+            },
+            {
+              type: "code",
+              content: `from sklearn.metrics import precision_score, recall_score, f1_score
+
+precision = precision_score(y_test, y_pred, average="weighted")
+recall = recall_score(y_test, y_pred, average="weighted")
+f1 = f1_score(y_test, y_pred, average="weighted")
+
+precision, recall, f1
+
+# Use average="weighted" for multiclass / imbalance
+`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Balanced vs Imbalanced datasets</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `# 4.1 Balanced dataset example
+y_true = [0, 0, 1, 1]
+y_pred = [0, 0, 1, 1]
+
+accuracy_score(y_true, y_pred)
+
+
+# 📌 Accuracy works well here
+
+4.2 Imbalanced dataset example (IMPORTANT)
+y_true = [0,0,0,0,0,0,0,1]
+y_pred = [0,0,0,0,0,0,0,0]
+
+accuracy_score(y_true, y_pred)
+
+
+# 📌 Accuracy ≈ 0.87 ❌
+# 📌 Model never finds class 1
+              `,
+            },
+
+            {
+              type: "text",
+              content: `<p>balanced data -> accuracy,
+                imbalanced data -> precision / recall,
+                FP costly -> precision,
+                FN costly -> recall
+                Need balance -> F1-score</p>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.metrics import classification_report
+
+print(classification_report(y_test, y_pred))
+# 📌 Prints all metrics at once
+# 📌 Accepted in most exams
+              `,
+            },
+          ],
+        },
+        {
+          title: "Section 6 Title",
+          content: [
+            {
+              type: "text",
+              content: `<h3>ჰიპერპარამეტრები (Hyperparameters)</h3>
+              <p>📌 Definition: parameters you set before training, not learned from data.
+Example:
+
+KNN → n_neighbors
+
+Random Forest → n_estimators, max_depth
+
+SVC → C, kernel</p>`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>GridSearchCV – დანიშნულება და პრინციპი</h3>
+              <p>Automatically searches best hyperparameters
+
+Uses Cross-Validation to avoid overfitting</p>`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Example: KNN + GridSearchCV + Cross-Validation</h3>
+              `,
+            },
+            {
+              type: "code",
+              content: `from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+# Load data
+data = load_iris()
+X = data.data
+y = data.target
+
+# Split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Scale features
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Define model
+knn = KNeighborsClassifier()
+
+# Define hyperparameter grid
+param_grid = {
+    "n_neighbors": [3, 5, 7, 9],
+    "weights": ["uniform", "distance"]
+}
+
+# GridSearchCV with 5-fold cross-validation
+grid = GridSearchCV(
+    estimator=knn,
+    param_grid=param_grid,
+    cv=5,
+    scoring="accuracy"
+)
+
+# Fit to train data
+grid.fit(X_train, y_train)
+
+# Best parameters and best score
+best_params = grid.best_params_
+best_score = grid.best_score_
+
+# Evaluate on test set
+best_model = grid.best_estimator_
+y_pred = best_model.predict(X_test)
+test_accuracy = accuracy_score(y_test, y_pred)
+
+best_params, best_score, test_accuracy
+`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Example with Random Forest</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.ensemble import RandomForestClassifier
+
+rf = RandomForestClassifier(random_state=42)
+
+param_grid = {
+    "n_estimators": [50, 100, 200],
+    "max_depth": [None, 5, 10]
+}
+
+grid = GridSearchCV(rf, param_grid, cv=5, scoring="accuracy")
+grid.fit(X_train, y_train)
+
+best_model = grid.best_estimator_
+y_pred = best_model.predict(X_test)
+accuracy_score(y_test, y_pred)
+
+              `,
+            },
+            {
+              type: "text",
+              content: `<p>Always split train/test first, then apply GridSearchCV on train
+
+GridSearchCV automates trial & error
+
+Use cross-validation → reduces overfitting
+
+After finding best parameters → test on held-out test set</p>
+              `,
+            },
+          ],
+        },
+        {
+          title: "Section 7 Title",
+          content: [
+            {
+              type: "text",
+              content: `<h3>Cross-Validation – არსი და დანიშნულება</h3>
+              <p>Definition:
+
+A method to evaluate model performance more reliably
+
+Splits data into multiple folds → trains & tests multiple times
+
+Reduces variance / overfitting compared to single train/test split
+
+Why use it:
+
+Single train/test can overestimate or underestimate performance
+
+Cross-validation → average of multiple splits → more robust metric</p>`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>K-Fold Cross-Validation – პრინციპი</h3>
+              <p>K-Fold steps:
+
+Split dataset into K equal folds
+
+For each fold:
+
+Use fold as test, rest as train
+
+Train model → compute metric
+
+Average metric across all folds → final performance estimate
+
+📌 Example: K=5 → each row is tested once, trained 4 times</p>`,
+            },
+            {
+              type: "text",
+              content: `<h3>Simple example using sklearn</h3>`,
+            },
+
+            {
+              type: "code",
+              content: `from sklearn.datasets import load_iris
+from sklearn.model_selection import cross_val_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+import numpy as np
+
+# Load data
+data = load_iris()
+X = data.data
+y = data.target
+
+# Scale features
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
+
+# Define model
+model = SVC(kernel="rbf", C=1.0)
+
+# 5-Fold Cross-Validation
+scores = cross_val_score(model, X, y, cv=5, scoring="accuracy")
+
+# Average score
+np.mean(scores), scores
+
+# cross_val_score automatically:
+
+# Splits data → trains → tests → repeats K times
+
+# Returns array of scores per fold
+`,
+            },
+          ],
+        },
+        {
+          title: "Section 8 Title",
+          content: [
+            {
+              type: "text",
+              content: `<h3>Overfitting-ის ამოცნობის ნიშნები</h3>
+              <p>High train accuracy, low test accuracy
+
+Model performs well on seen data, poorly on unseen
+
+Very complex model for small/simple dataset</p>`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Exam-style Python Example</h3>
+              `,
+            },
+            {
+              type: "code",
+              content: `import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+# Simple dataset
+X = np.array([[i] for i in range(1, 11)])
+y = np.array([0,0,0,0,1,1,1,1,1,1])
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Overfitting example: very deep tree
+model = DecisionTreeClassifier(max_depth=None)  # no limit
+model.fit(X_train, y_train)
+
+y_train_pred = model.predict(X_train)
+y_test_pred = model.predict(X_test)
+
+accuracy_score(y_train, y_train_pred), accuracy_score(y_test, y_test_pred)
+
+# 📌 Usually output:
+
+# Train accuracy = 100%
+
+# Test accuracy < 100% → overfitting detected`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Underfitting example</h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `<h3># Very shallow tree → underfitting
+model = DecisionTreeClassifier(max_depth=1)
+model.fit(X_train, y_train)
+
+y_train_pred = model.predict(X_train)
+y_test_pred = model.predict(X_test)
+
+accuracy_score(y_train, y_train_pred), accuracy_score(y_test, y_test_pred)
+</h3>
+              `,
+            },
+            {
+              type: "text",
+              content: `<h3>Bonus: Quick Overfit vs Underfit visualization/h3>
+              `,
+            },
+
+            {
+              type: "code",
+              content: `
+              import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+
+X = np.arange(0,10,0.5).reshape(-1,1)
+y = np.sin(X).ravel() + 0.1*np.random.randn(len(X))
+
+# Underfit: linear model
+model = LinearRegression()
+model.fit(X, y)
+plt.plot(X, model.predict(X), label="Underfit")
+
+# Overfit: high degree poly
+poly = PolynomialFeatures(degree=15)
+X_poly = poly.fit_transform(X)
+model.fit(X_poly, y)
+plt.plot(X, model.predict(X_poly), label="Overfit")
+
+plt.scatter(X, y, color='black')
+plt.legend()
+plt.show()
+
+              `,
+            },
+          ],
+        },
+        {
+          title: "Section 9 Title",
+          content: [
+            {
+              type: "text",
+              content: `<h3>კლასტერიზაცია (Clustering)</h3>
+              <p>Definition: grouping data points without labels
+
+Unsupervised learning → model tries to find natural clusters
+
+📌 Common use cases: customer segmentation, image compression, anomaly detection</p>`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>K-Means კლასტერიზაციის ალგორითმი</h3>
+              <p>Algorithm steps:
+
+Choose K clusters
+
+Initialize centroids randomly
+
+Assign each point to the nearest centroid
+
+Recalculate centroids based on assigned points
+
+Repeat steps 3–4 until convergence</p>`,
+            },
+            {
+              type: "code",
+              content: `# example
+              import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Example dataset: 2D points
+X = np.array([
+    [1,2],[1,4],[1,0],
+    [4,2],[4,4],[4,0],
+    [10,2],[10,4],[10,0]
+])
+
+# K-Means
+kmeans = KMeans(n_clusters=3, random_state=42)
+kmeans.fit(X)
+
+# Cluster labels
+labels = kmeans.labels_
+centroids = kmeans.cluster_centers_
+
+print("Labels:", labels)
+print("Centroids:", centroids)
+
+# Plot clusters
+plt.scatter(X[:,0], X[:,1], c=labels, cmap="viridis")
+plt.scatter(centroids[:,0], centroids[:,1], color='red', marker='X', s=200)
+plt.show()
+`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>Parameter K</h3>
+              <p>K = number of clusters
+
+Common methods to choose K:
+
+Elbow method → plot inertia_ vs K → find “elbow”
+
+Silhouette score → higher = better separation</p>`,
+            },
+            {
+              type: "code",
+              content: `inertia = []
+for k in range(1, 6):
+    km = KMeans(n_clusters=k, random_state=42)
+    km.fit(X)
+    inertia.append(km.inertia_)
+
+plt.plot(range(1,6), inertia, marker='o')
+plt.xlabel("K")
+plt.ylabel("Inertia")
+plt.show()
+`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>K-Means შეზღუდვები (Limitations)</h3>
+              <p>limitations: 
+                Needs K in advance
+Must guess number of clusters, Sensitive to initial centroids
+Different results if random, Assumes spherical clusters
+Struggles with weird shapes, Sensitive to outliers
+Can distort centroids, Works best with scaled/normalized data
+Otherwise distance metric fails</p>`,
+            },
+          ],
+        },
+        {
+          title: "Section 9 Title",
+          content: [
+            {
+              type: "text",
+              content: `<h3>Dimensionality Reduction – არსი</h3>
+              <p>Definition: Reduce number of features → simpler, faster, less noise
+
+Useful when dataset has many correlated variables
+
+Main goal → retain most information with fewer features</p>`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>PCA (Principal Component Analysis)</h3>
+              <p>Concept:
+
+Finds principal components (new axes) that capture maximum variance
+
+Each PC = linear combination of original features
+
+First PC → explains most variance, second PC → next most, etc.</p>`,
+            },
+            {
+              type: "code",
+              content: `import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+# Load data
+data = load_iris()
+X = data.data
+y = data.target
+
+# Scale features → REQUIRED for PCA
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# PCA transformation
+pca = PCA(n_components=2)  # reduce to 2 dimensions
+X_pca = pca.fit_transform(X_scaled)
+
+# Explained variance
+print("Explained variance ratio:", pca.explained_variance_ratio_)
+
+# Plot
+plt.scatter(X_pca[:,0], X_pca[:,1], c=y, cmap='viridis')
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+plt.title("PCA of Iris Dataset")
+plt.show()
+
+# Key points in code
+
+# StandardScaler → mandatory before PCA
+
+# PCA(n_components=...) → choose how many PCs to keep
+
+# explained_variance_ratio_ → tells how much info each PC keeps
+`,
+            },
+
+            {
+              type: "text",
+              content: `<h3>PCA steps:</h3>
+              <p>1. Scale features
+2. Fit PCA(n_components)
+3. Transform data
+4. Check explained_variance_ratio_
+5. Use reduced data for visualization or model</p>`,
+            },
+          ],
+        },
+      ];
+
+      const mainContent = document.getElementById("mainContent");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      // Create all pages
+      sections.forEach((section, index) => {
+        const page = document.createElement("div");
+        page.className = `page ${index === 0 ? "active" : ""}`;
+        page.id = `page-${index}`;
+
+        let pageHTML = `<h1 class="page-title">${section.title}</h1>`;
+
+        section.content.forEach((item) => {
+          if (item.type === "text") {
+            pageHTML += `<div class="text-section">${item.content}</div>`;
+          } else if (item.type === "code") {
+            pageHTML += `<div class="code-block"><pre>${escapeHtml(item.content)}</pre></div>`;
+          }
+        });
+
+        page.innerHTML = pageHTML;
+        mainContent.appendChild(page);
+      });
+
+      // Navigation functionality
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const pageIndex = link.getAttribute("data-page");
+
+          navLinks.forEach((l) => l.classList.remove("active"));
+          document
+            .querySelectorAll(".page")
+            .forEach((p) => p.classList.remove("active"));
+
+          link.classList.add("active");
+          document.getElementById(`page-${pageIndex}`).classList.add("active");
+
+          mainContent.scrollTop = 0;
+        });
+      });
+
+      function escapeHtml(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.innerHTML;
+      }
+    </script>
+  </body>
+</html>
